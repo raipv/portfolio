@@ -1,0 +1,71 @@
+<!-- index.html - Basic portfolio outlet -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GURURAJ RAI — Portfolio</title>
+</head>
+<body>
+  <header>
+    <h1>GURURAJ RAI</h1>
+    <p>QA Engineer / Java Developer / Video Editor</p>
+    <nav>
+      <a href="#about">About</a> |
+      <a href="#skills">Skills</a> |
+      <a href="#projects">Projects</a> |
+      <a href="#contact">Contact</a>
+    </nav>
+    <hr/>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p>Short intro about you. Replace this text with a 2–3 line summary: who you are and what you do.</p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>Java</li>
+        <li>HTML / CSS / JavaScript</li>
+        <li>JDBC / MySQL</li>
+        <li>Jira, VS Code, Playwright (if applicable)</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <!-- Project template: copy this block for each project -->
+      <article class="project">
+        <h3>Project 1 — Simple DBMS (Java + MySQL)</h3>
+        <p>Short description of the project. What it does and your role.</p>
+        <ul>
+          <li>Tech: Java, JDBC, MySQL, HTML frontend</li>
+          <li>Highlights: CRUD operations, login flow, test cases</li>
+        </ul>
+      </article>
+
+      <!-- Add more project blocks as needed -->
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: your.email@example.com</p>
+      <p>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <hr/>
+    <small>© <span id="year"></span> GURURAJ RAI</small>
+  </footer>
+
+  <script>
+    // small JS: set copyright year automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
