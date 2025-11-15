@@ -1,79 +1,95 @@
 <!-- index.html - Basic portfolio outlet -->
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GURURAJ RAI — Portfolio</title>
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GURURAJ RAI — Portfolio</title>
+  </head>
   <link rel="stylesheet" href="styles.css" />
-<body>
-  <header>
-    <h1 style="font-size: 40px;
-  font-weight: 900;
-  background: linear-gradient(90deg, #0077cc, #0077cc);
-  -webkit-background-clip: text;
-  color: transparent;
-  letter-spacing: 3px;
-  margin-bottom: 5px;;
-      ">GURURAJ RAI</h1>
-    <p>QA Engineer /  Video Editor</p>
-    <nav>
-      <a href="#about">About Me</a> |
-      <a href="#skills">Skills</a> |
-      <a href="#projects">Projects</a> |
-      <a href="#contact">Contact</a>
-    </nav>
-    <hr/>
-  </header>
+  <body>
+    <header>
+      <h1
+        style="
+          font-size: 40px;
+          font-weight: 900;
+          color: #0077cc;
+          letter-spacing: 3px;
+          margin-bottom: 5px;
+        "
+      >
+        GURURAJ RAI
+      </h1>
 
-  <main>
-    <section id="about">
-      <h2>About</h2>
-      <p>Hi, I'm Gururaj Rai, a QA Engineer from Mangalore with a strong focus on ensuring software quality and user satisfaction. I’m passionate about testing, finding issues early, and helping teams deliver reliable, high-performing applications.</p>
-    </section>
+      <p>QA Engineer / Video Editor</p>
+      <nav>
+        <a href="#about">About</a> | <a href="#skills">Skills</a> |
+        <a href="#projects">Projects</a> |
+        <a href="#contact">Contact</a>
+      </nav>
+      <hr />
+    </header>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <ul>
-        <li>Java</li>
-        <li>HTML / CSS / JavaScript</li>
-        <li>JDBC / MySQL</li>
-        <li>Playwright, wdio</li>
-        <li>Jira, VS Code, Jenkins, GitHub, Cursor</li>
-      </ul>
-    </section>
+    <main>
+      <section id="about">
+        <h2>About</h2>
+        <article class="project">
+          <p>
+            Hi, I'm Gururaj Rai, a QA Engineer from Mangalore with a strong
+            focus on ensuring software quality and user satisfaction. I’m
+            passionate about testing, finding issues early, and helping teams
+            deliver reliable, high-performing applications.
+          </p>
+        </article>
+      </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
+      <section id="skills">
+        <h2>Skills</h2>
+        <article class="project">
+          <ul>
+            <li>Java</li>
+            <li>HTML / CSS / JavaScript</li>
+            <li>JDBC / MySQL</li>
+            <li>Playwright, wdio</li>
+            <li>Jira, VS Code, Jenkins, GitHub, Cursor</li>
+          </ul>
+        </article>
+      </section>
 
-      <!-- Project template: copy this block for each project -->
-      <article class="project">
-        <h3>Eva.ai</h3>
-        <p>Currently im Working QA Engineer.</p>
-        <ul>
-          <li>Manual Testing and Automation Testing</li>
-        </ul>
-      </article>
+      <section id="projects">
+        <h2>Projects</h2>
 
-      <!-- Add more project blocks as needed -->
-    </section>
+        <!-- Project template: copy this block for each project -->
+        <article class="project">
+          <h3>Eva.ai</h3>
+          <p>Currently im Working QA Engineer.</p>
+          <ul>
+            <li>Manual Testing and Automation Testing</li>
+          </ul>
+        </article>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: gururajraipv98@gmail.com</p>
-      <p>GitHub: <a href="https://github.com/raipv" target="_blank">link</a></p>
-    </section>
-  </main>
+        <!-- Add more project blocks as needed -->
+      </section>
 
-  <footer>
-    <hr/>
-    <small>© <span id="year"></span> Gururaj Rai</small>
-  </footer>
+      <section id="contact">
+        <h2>Contact</h2>
+        <article class="project">
+          <p>Email: gururajraipv98@gmail.com</p>
+          <p>
+            GitHub: <a href="https://github.com/raipv" target="_blank">link</a>
+          </p>
+        </article>
+      </section>
+    </main>
 
-  <script>
-    // small JS: set copyright year automatically
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
+    <footer>
+      <hr />
+      <small>© <span id="year"></span> Gururaj Rai</small>
+    </footer>
+
+    <script>
+      // small JS: set copyright year automatically
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>
