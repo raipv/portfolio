@@ -9,8 +9,23 @@
   <link rel="stylesheet" href="styles.css" />
   <body>
     <header>
+      <!-- Profile Photo Popup -->
+      <div id="photoPopup" class="popup">
+        <img
+          id="popupImage"
+          class="popup-image"
+          src="image/rai.jpg"
+          alt="Profile Photo"
+        />
+      </div>
+
       <div class="profile-container">
-        <img src="image/rai.jpg" alt="Profile Photo" class="profile-photo" />
+        <img
+          src="image/rai.jpg"
+          alt="Profile Photo"
+          class="profile-photo"
+          onclick="openPhoto()"
+        />
       </div>
       <h1
         style="
@@ -93,6 +108,17 @@
     <script>
       // small JS: set copyright year automatically
       document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <script>
+      function openPhoto() {
+        document.getElementById('photoPopup').style.display = 'flex';
+      }
+
+      document
+        .getElementById('photoPopup')
+        .addEventListener('click', function () {
+          this.style.display = 'none';
+        });
     </script>
   </body>
 </html>
