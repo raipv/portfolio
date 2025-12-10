@@ -109,6 +109,20 @@
           </p>
         </article>
       </section>
+
+      <div class="feedback-box">
+        <p class="feedback-title">Rate my Portfolio:</p>
+
+        <div class="star-rating">
+          <i class="star" data-value="1">★</i>
+          <i class="star" data-value="2">★</i>
+          <i class="star" data-value="3">★</i>
+          <i class="star" data-value="4">★</i>
+          <i class="star" data-value="5">★</i>
+        </div>
+
+        <p id="ratingResult" class="feedback-result"></p>
+      </div>
     </main>
 
     <footer>
@@ -167,6 +181,36 @@
           localStorage.setItem('theme', 'light');
         }
       });
+    </script>
+    <script>
+      const stars = document.querySelectorAll('.star-rating .star');
+      const ratingResult = document.getElementById('ratingResult');
+      let selectedRating = 0;
+
+      stars.forEach((star) => {
+        // Hover effect
+        star.addEventListener('mouseenter', () => {
+          const value = parseInt(star.dataset.value);
+          highlightStars(value);
+        });
+
+        // Remove hover when leaving area
+        star.addEventListener('mouseleave', () => {
+          highlightStars(selectedRating);
+        });
+
+        // Click event to select rating
+        star.addEventListener('click', () => {
+          selectedRating = parseInt(star.dataset.value);
+          highlightStars(selectedRating);
+        });
+      });
+
+      function highlightStars(count) {
+        stars.forEach((s) => {
+          s.classList.toggle('selected', parseInt(s.dataset.value) <= count);
+        });
+      }
     </script>
   </body>
 </html>

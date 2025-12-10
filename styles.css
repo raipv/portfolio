@@ -187,3 +187,50 @@ footer {
     background: rgba(0, 0, 0, 0.75); /* slightly darker for mobile */
   }
 }
+
+/* ===== Minimal Feedback Widget ===== */
+.feedback-box {
+  text-align: center;
+  margin: 10px 0 10px;
+  padding: 5px 0;
+}
+
+.feedback-title {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--text-color);
+}
+
+.star-rating {
+  display: inline-flex;
+  gap: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.star {
+  transition: color 0.2s ease;
+}
+
+.star.selected,
+.star.hover {
+  color: gold;
+}
+
+.feedback-result {
+  margin-top: 8px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+/* Dark mode */
+body.dark-mode .star {
+  color: #555;
+}
+
+body.dark-mode .star.selected,
+body.dark-mode .star.hover {
+  color: #ffcc00;
+}
