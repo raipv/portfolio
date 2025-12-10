@@ -5,17 +5,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>GURURAJ RAI — Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <link rel="stylesheet" href="styles.css" />
   <body>
     <header>
       <!-- Profile Photo Popup -->
-      <div id="photoPopup" class="popup">
+      <div id="photoPopup" class="popup" aria-hidden="true">
         <img
           id="popupImage"
           class="popup-image"
           src="image/rai.jpg"
           alt="Profile Photo"
+          onclick="event.stopPropagation()"
         />
       </div>
 
@@ -27,6 +28,7 @@
           onclick="openPhoto()"
         />
       </div>
+
       <h1
         style="
           font-size: 40px;
@@ -45,6 +47,16 @@
         <a href="#projects">Projects</a> |
         <a href="#contact">Contact</a>
       </nav>
+
+      <!-- Dark / Light mode toggle -->
+      <button
+        id="themeToggle"
+        class="theme-toggle"
+        aria-label="Toggle dark mode"
+      >
+        🌙
+      </button>
+
       <hr />
     </header>
 
@@ -77,7 +89,6 @@
       <section id="projects">
         <h2>Projects</h2>
 
-        <!-- Project template: copy this block for each project -->
         <article class="project">
           <h3>Eva.ai</h3>
           <p>Currently im Working QA Engineer.</p>
@@ -85,8 +96,6 @@
             <li>Manual Testing and Automation Testing</li>
           </ul>
         </article>
-
-        <!-- Add more project blocks as needed -->
       </section>
 
       <section id="contact">
@@ -105,25 +114,55 @@
       <small>© <span id="year"></span> Gururaj Rai</small>
     </footer>
 
+    <!-- JS: Year -->
     <script>
-      // small JS: set copyright year automatically
       document.getElementById('year').textContent = new Date().getFullYear();
     </script>
+
+    <!-- JS: Profile popup (open/close + scroll close) -->
     <script>
       function openPhoto() {
-        document.getElementById('photoPopup').style.display = 'flex';
+        const popup = document.getElementById('photoPopup');
+        popup.style.display = 'flex';
+        popup.setAttribute('aria-hidden', 'false');
       }
 
       document
         .getElementById('photoPopup')
         .addEventListener('click', function () {
           this.style.display = 'none';
+          this.setAttribute('aria-hidden', 'true');
         });
+
+      // Close popup when user scrolls
       window.addEventListener('scroll', function () {
         const popup = document.getElementById('photoPopup');
         if (popup.style.display === 'flex') {
           popup.style.display = 'none';
           popup.setAttribute('aria-hidden', 'true');
+        }
+      });
+    </script>
+
+    <!-- JS: Dark / Light mode toggle -->
+    <script>
+      const toggleBtn = document.getElementById('themeToggle');
+      const currentTheme = localStorage.getItem('theme');
+
+      if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        toggleBtn.textContent = '☀️';
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+
+        if (document.body.classList.contains('dark-mode')) {
+          toggleBtn.textContent = '☀️';
+          localStorage.setItem('theme', 'dark');
+        } else {
+          toggleBtn.textContent = '🌙';
+          localStorage.setItem('theme', 'light');
         }
       });
     </script>

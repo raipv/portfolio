@@ -1,19 +1,49 @@
+/* ===== Global Styles & Theme ===== */
+* {
+  box-sizing: border-box;
+}
+
+/* Theme variables */
+:root {
+  --bg-color: #f8f9fa;
+  --text-color: #333;
+  --card-bg: #ffffff;
+  --card-border: #dddddd;
+  --accent: #0077cc;
+  --section-bg: #ffffff;
+  --nav-link: #0077cc;
+  --header-bg: #ffffff;
+  --footer-bg: #ffffff;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #e4e4e4;
+  --card-bg: #1e1e1e;
+  --card-border: #333333;
+  --accent: #4aa3ff;
+  --section-bg: #1e1e1e;
+  --nav-link: #4aa3ff;
+  --header-bg: #1a1a1a;
+  --footer-bg: #1a1a1a;
+}
+
 /* ===== Global Styles ===== */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  background: #f8f9fa;
-  color: #333;
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 /* ===== Header ===== */
 header {
   text-align: center;
-  padding: 30px 10px;
-  background: #fff;
-  border-bottom: 1px solid #ddd;
+  padding: 30px 10px 15px;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--card-border);
 }
 
 header h1 {
@@ -22,7 +52,7 @@ header h1 {
 
 header p {
   margin-top: 0;
-  color: #555;
+  color: var(--text-color);
 }
 
 /* ===== Navigation ===== */
@@ -32,7 +62,7 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: #0077cc;
+  color: var(--nav-link);
   font-weight: bold;
   padding: 0 10px;
 }
@@ -41,60 +71,51 @@ nav a:hover {
   text-decoration: underline;
 }
 
+/* Theme Toggle Button */
+.theme-toggle {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.theme-toggle:hover {
+  background: var(--card-border);
+}
+
 /* ===== Main Sections ===== */
 section {
   padding: 30px 20px;
   margin: 20px auto;
   max-width: 900px;
-  background: #fff;
+  background: var(--section-bg);
   border-radius: 8px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--card-border);
 }
 
 h2 {
-  color: #0077cc;
+  color: var(--accent);
   margin-top: 0;
 }
 
 /* Project Cards */
 .project {
   padding: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--card-border);
   margin: 15px 0;
   border-radius: 6px;
-  background: #fafafa;
+  background: var(--card-bg);
 }
 
 /* ===== Footer ===== */
 footer {
   text-align: center;
   padding: 20px;
-  background: #fff;
-  border-top: 1px solid #ddd;
-}
-
-/* ===== Mobile Responsive ===== */
-@media (max-width: 600px) {
-  section {
-    padding: 20px 15px;
-  }
-  nav a {
-    display: inline-block;
-    margin: 5px 0;
-  }
-  .profile-photo {
-    width: 110px;
-    height: 110px;
-  }
-  .popup-image {
-    width: 200px;
-    height: 200px;
-    border-width: 4px;
-  }
-
-  .popup {
-    background: rgba(0, 0, 0, 0.75); /* slightly darker for mobile */
-  }
+  background: var(--footer-bg);
+  border-top: 1px solid var(--card-border);
 }
 
 /* Profile Photo */
@@ -109,8 +130,11 @@ footer {
   height: 140px;
   object-fit: cover;
   border-radius: 50%;
+  border: 3px solid var(--accent);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
+
 /* Popup Fullscreen View */
 .popup {
   display: none;
@@ -137,4 +161,30 @@ footer {
 
 .popup-image:hover {
   transform: scale(1.05);
+}
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 600px) {
+  section {
+    padding: 20px 15px;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 5px 0;
+  }
+
+  .profile-photo {
+    width: 110px;
+    height: 110px;
+  }
+
+  .popup-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .popup {
+    background: rgba(0, 0, 0, 0.75); /* slightly darker for mobile */
+  }
 }
