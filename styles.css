@@ -207,16 +207,20 @@ footer {
   gap: 5px;
   font-size: 20px;
   cursor: pointer;
-  color: #ccc;
 }
 
 .star {
-  transition: color 0.2s ease;
+  color: #ccc;
+  padding: 6px; /* bigger tap area */
+  display: inline-block; /* better for touch */
+  transition:
+    color 0.2s ease,
+    transform 0.1s ease;
 }
 
-.star.selected,
-.star.hover {
+.star.selected {
   color: gold;
+  transform: scale(1.05);
 }
 
 .feedback-result {
@@ -230,7 +234,22 @@ body.dark-mode .star {
   color: #555;
 }
 
-body.dark-mode .star.selected,
-body.dark-mode .star.hover {
+body.dark-mode .star.selected {
   color: #ffcc00;
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .feedback-box {
+    margin-top: 20px;
+  }
+
+  .star-rating {
+    font-size: 26px;
+    gap: 4px;
+  }
+
+  .star {
+    padding: 8px; /* even easier to tap */
+  }
 }

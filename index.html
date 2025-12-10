@@ -181,32 +181,24 @@
       });
     </script>
     <script>
-      const stars = document.querySelectorAll('.star-rating .star');
+      // Star rating logic (click / tap only)
+      const stars = document.querySelectorAll('.feedback-box .star');
       const ratingResult = document.getElementById('ratingResult');
       let selectedRating = 0;
 
       stars.forEach((star) => {
-        // Hover effect
-        star.addEventListener('mouseenter', () => {
-          const value = parseInt(star.dataset.value);
-          highlightStars(value);
-        });
-
-        // Remove hover when leaving area
-        star.addEventListener('mouseleave', () => {
-          highlightStars(selectedRating);
-        });
-
-        // Click event to select rating
         star.addEventListener('click', () => {
-          selectedRating = parseInt(star.dataset.value);
+          const value = parseInt(star.dataset.value);
+          selectedRating = value;
           highlightStars(selectedRating);
+          // ratingResult.textContent = `You rated: ${selectedRating} / 5 ⭐`;
         });
       });
 
       function highlightStars(count) {
         stars.forEach((s) => {
-          s.classList.toggle('selected', parseInt(s.dataset.value) <= count);
+          const starValue = parseInt(s.dataset.value);
+          s.classList.toggle('selected', starValue <= count);
         });
       }
     </script>
