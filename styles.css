@@ -109,6 +109,7 @@ footer {
   height: 140px;
   object-fit: cover;
   border-radius: 50%;
+  border: 3px solid #0077cc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 /* Popup Fullscreen View */
@@ -131,6 +132,7 @@ footer {
   height: 300px;
   border-radius: 50%; /* keeps circular shape */
   object-fit: cover;
+  border: 5px solid #fff;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s;
 }
