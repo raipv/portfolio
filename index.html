@@ -120,6 +120,13 @@
         .addEventListener('click', function () {
           this.style.display = 'none';
         });
+      window.addEventListener('scroll', function () {
+        const popup = document.getElementById('photoPopup');
+        if (popup.style.display === 'flex') {
+          popup.style.display = 'none';
+          popup.setAttribute('aria-hidden', 'true');
+        }
+      });
     </script>
   </body>
 </html>
