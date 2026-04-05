@@ -108,6 +108,33 @@
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
     </script>
+   
+   <script>
+      // Wait for the DOM to load, and wait a tiny bit for the JSON data to render
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          const fadeElements = document.querySelectorAll('.fade-in');
+
+          const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Triggers when 15% of the element is visible
+          };
+
+          const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Optional: Stop observing once it's visible so it doesn't animate again when scrolling up
+                observer.unobserve(entry.target); 
+              }
+            });
+          }, observerOptions);
+
+          fadeElements.forEach(el => observer.observe(el));
+        }, 100); // 100ms delay ensures the JSON data has populated the DOM
+      });
+    </script>
 
     <script>
       async function loadPortfolioData() {
