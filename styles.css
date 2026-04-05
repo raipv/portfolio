@@ -253,3 +253,46 @@ body.dark-mode .star.selected {
     padding: 8px; /* even easier to tap */
   }
 }
+
+/* ===== Scroll Animations ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px); /* Starts slightly lower */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, visibility;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Skill Tags Styling ===== */
+#skillsList {
+  list-style-type: none; /* Remove default bullets */
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#skillsList li {
+  background-color: var(--accent);
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#skillsList li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode #skillsList li {
+  background-color: #2a2a2a;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
