@@ -1,0 +1,29 @@
+{
+  "name": "GURURAJ RAI",
+  "title": "QA Engineer / Video Editor",
+  "location": "Mangalore",
+  "profileImage": "image/rai.jpg",
+  "about": {
+    "text": "Hi, I'm Gururaj Rai, a QA Engineer from Mangalore with a strong focus on ensuring software quality and user satisfaction. I'm passionate about testing, finding issues early, and helping teams deliver reliable, high-performing applications."
+  },
+  "skills": [
+    "Java",
+    "HTML / CSS / JavaScript",
+    "JDBC / MySQL",
+    "Playwright, wdio",
+    "Jira, VS Code, Jenkins, GitHub, Cursor"
+  ],
+  "projects": [
+    {
+      "title": "Eva.ai",
+      "description": "Currently im Working QA Engineer.",
+      "responsibilities": [
+        "Manual Testing and Automation Testing"
+      ]
+    }
+  ],
+  "contact": {
+    "email": "gururajraipv98@gmail.com",
+    "github": "https://github.com/raipv"
+  }
+}
