@@ -1,20 +1,17 @@
-<!-- index.html - Basic portfolio outlet -->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>GURURAJ RAI — Portfolio</title>
+    <title id="pageTitle">Portfolio</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header>
-      <!-- Profile Photo Popup -->
       <div id="photoPopup" class="popup" aria-hidden="true">
         <img
           id="popupImage"
           class="popup-image"
-          src="image/rai.jpg"
           alt="Profile Photo"
           onclick="event.stopPropagation()"
         />
@@ -22,7 +19,7 @@
 
       <div class="profile-container">
         <img
-          src="image/rai.jpg"
+          id="profileImage"
           alt="Profile Photo"
           class="profile-photo"
           onclick="openPhoto()"
@@ -30,6 +27,7 @@
       </div>
 
       <h1
+        id="name"
         style="
           font-size: 40px;
           font-weight: 900;
@@ -37,18 +35,15 @@
           letter-spacing: 3px;
           margin-bottom: 5px;
         "
-      >
-        GURURAJ RAI
-      </h1>
+      ></h1>
 
-      <p>QA Engineer / Video Editor</p>
+      <p id="title"></p>
       <nav>
         <a href="#about">About</a> | <a href="#skills">Skills</a> |
         <a href="#projects">Projects</a> |
         <a href="#contact">Contact</a>
       </nav>
 
-      <!-- Dark / Light mode toggle -->
       <button
         id="themeToggle"
         class="theme-toggle"
@@ -64,46 +59,28 @@
       <section id="about">
         <h2>About</h2>
         <article class="project">
-          <p>
-            Hi, I'm Gururaj Rai, a QA Engineer from Mangalore with a strong
-            focus on ensuring software quality and user satisfaction. I’m
-            passionate about testing, finding issues early, and helping teams
-            deliver reliable, high-performing applications.
-          </p>
+          <p id="aboutText"></p>
         </article>
       </section>
 
       <section id="skills">
         <h2>Skills</h2>
         <article class="project">
-          <ul>
-            <li>Java</li>
-            <li>HTML / CSS / JavaScript</li>
-            <li>JDBC / MySQL</li>
-            <li>Playwright, wdio</li>
-            <li>Jira, VS Code, Jenkins, GitHub, Cursor</li>
-          </ul>
+          <ul id="skillsList"></ul>
         </article>
       </section>
 
       <section id="projects">
         <h2>Projects</h2>
-
-        <article class="project">
-          <h3>Eva.ai</h3>
-          <p>Currently im Working QA Engineer.</p>
-          <ul>
-            <li>Manual Testing and Automation Testing</li>
-          </ul>
-        </article>
+        <div id="projectsList"></div>
       </section>
 
       <section id="contact">
         <h2>Contact</h2>
         <article class="project">
-          <p>Email: gururajraipv98@gmail.com</p>
+          <p>Email: <a id="emailLink" href=""></a></p>
           <p>
-            GitHub: <a href="https://github.com/raipv" target="_blank">link</a>
+            GitHub: <a id="githubLink" href="" target="_blank">link</a>
           </p>
         </article>
       </section>
@@ -125,15 +102,85 @@
 
     <footer>
       <hr />
-      <small>© <span id="year"></span> Gururaj Rai</small>
+      <small>© <span id="year"></span> <span id="footerName"></span></small>
     </footer>
 
-    <!-- JS: Year -->
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 
-    <!-- JS: Profile popup (open/close + scroll close) -->
+    <script>
+      async function loadPortfolioData() {
+        try {
+          const response = await fetch('data.json');
+          const data = await response.json();
+
+          // Update Document Title (Browser Tab)
+          document.title = `${data.name} — Portfolio`;
+
+          // Update Images
+          document.getElementById('popupImage').src = data.profileImage;
+          document.getElementById('profileImage').src = data.profileImage;
+
+          // Update Name, Title, and Footer Name
+          document.getElementById('name').textContent = data.name;
+          document.getElementById('title').textContent = data.title;
+          document.getElementById('footerName').textContent = data.name;
+
+          // Update About Section
+          document.getElementById('aboutText').textContent = data.about.text;
+
+          // Update Skills
+          const skillsList = document.getElementById('skillsList');
+          skillsList.innerHTML = '';
+          data.skills.forEach(skill => {
+            const li = document.createElement('li');
+            li.textContent = skill;
+            skillsList.appendChild(li);
+          });
+
+          // Update Projects
+          const projectsList = document.getElementById('projectsList');
+          projectsList.innerHTML = '';
+          data.projects.forEach(project => {
+            const article = document.createElement('article');
+            article.className = 'project';
+
+            const h3 = document.createElement('h3');
+            h3.textContent = project.title;
+
+            const p = document.createElement('p');
+            p.textContent = project.description;
+
+            const ul = document.createElement('ul');
+            project.responsibilities.forEach(resp => {
+              const li = document.createElement('li');
+              li.textContent = resp;
+              ul.appendChild(li);
+            });
+
+            article.appendChild(h3);
+            article.appendChild(p);
+            article.appendChild(ul);
+            projectsList.appendChild(article);
+          });
+
+          // Update Contact
+          const emailLink = document.getElementById('emailLink');
+          emailLink.textContent = data.contact.email;
+          emailLink.href = 'mailto:' + data.contact.email;
+
+          const githubLink = document.getElementById('githubLink');
+          githubLink.href = data.contact.github;
+        } catch (error) {
+          console.error('Error loading portfolio data:', error);
+        }
+      }
+
+      // Load data when page loads
+      document.addEventListener('DOMContentLoaded', loadPortfolioData);
+    </script>
+
     <script>
       function openPhoto() {
         const popup = document.getElementById('photoPopup');
@@ -158,7 +205,6 @@
       });
     </script>
 
-    <!-- JS: Dark / Light mode toggle -->
     <script>
       const toggleBtn = document.getElementById('themeToggle');
       const currentTheme = localStorage.getItem('theme');
